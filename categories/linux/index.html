@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tag:   | Guodong</title>
+    <title>Category: linux | Guodong</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -75,7 +75,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "tags/index.html";
+        var pageId = "categories/linux/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -84,45 +84,44 @@
     </script>
 
     
-
 <div class="container archive-body">
     <div class="row">
         <div class="col-xs-3 well">
             <div class="archive-title" >
-                <h2 class="tag-icon">标签</h2>
-                
-                <a data-src="/tags/bbb/" href="#bbb" title="bbb">bbb<sup>2</sup></a>
-                
-                <a data-src="/tags/bbbimages/" href="#bbbimages" title="bbbimages">bbbimages<sup>0</sup></a>
-                
+                <h2 class="tag-icon">linux</h2>
+                <div>
+                    <a href="/categories"><< 返回标签列表</a> 
+                </div>
             </div>
         </div>
         
-        <div class="all-list-box">
+        <div class="col-xs-9" id="category-list-body">
+            
+            <article class="post">
+                <div class="jumbotron">
+                    <h1><a href="/2016/05/19/awk/" title="awk">awk</a></h1>
+
+                    
+                        <p>此处来自ubuntu下man awk。awk语法比较复杂，本文介绍awk语法规则，不会对所有语法一一列举。
+模式来自awk：1An AWK program is a sequence of pattern &amp;#123;action&amp;#125; pairs and user fun</p>
+                    
+
+                    <p class="say-title">
+                        —— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
+                        <a href="http://wangguodong577.github.io" target="_blank" title="Guodong">Guodong</a>
+                        于2016-05-19自豪地唠嗑
+                    </p>
+                </div>
+            </article>
+            
+            
+            
         </div>
     </div>
+        
+    <div class="col-xs-19 all-list-box">
+    </div>
 </div>
-    
-<script>
-$(function() {
-    var box = $('.all-list-box');
-    var first = $('.archive-title a:first-of-type');
-    var list = $('.archive-title a');
-    
-    box.load(first.attr('data-src').toString() + ' #tag-list-body');
-    first.addClass('currentTag');
-    list.each(function() {
-        $(this).click(function() {
-            var listSrc = $(this).attr('data-src').toString() + ' #tag-list-body';
-            box.load(listSrc);
-            list.removeClass('currentTag');
-            $(this).addClass('currentTag');
-        });
-    });
-});
-</script>
-
-
     <footer id="footer">
     <div id="bottom-tip">
         Guodong
