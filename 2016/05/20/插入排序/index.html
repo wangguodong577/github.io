@@ -88,17 +88,26 @@
         <h1>插入排序</h1>
         
         <div class="time-info">
-发表于:<time datetime="2016-05-20T04:05:12.000Z" itemprop="datePublished">2016-05-20</time>，更新于:<time datetime="2016-05-20T04:48:46.000Z" itemprop="dateModified">2016-05-20</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
+发表于:<time datetime="2016-05-20T04:05:12.000Z" itemprop="datePublished">2016-05-20</time>，更新于:<time datetime="2016-05-20T05:04:04.000Z" itemprop="dateModified">2016-05-20</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
         </div>
         
         <div class="post-body-inner">
             <div id="toc" class="toc-article well">
                 <strong class="toc-title">大纲</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#两张图"><span class="toc-number">1.</span> <span class="toc-text">两张图</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#两张图"><span class="toc-number">1.</span> <span class="toc-text">两张图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法介绍"><span class="toc-number">2.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li></ol>
             </div>
             
             <p>打过扑克吗？一般情况从抓牌开始到最后，你手里的牌已经按顺序排好了，这就是插入排序。<br><a id="more"></a></p>
 <h2 id="两张图"><a href="#两张图" class="headerlink" title="两张图"></a>两张图</h2><p><img src="http://o7glki26c.bkt.clouddn.com/insertionSort1.jpg?imageView2/0/h/200/format/png" alt=""><br><img src="http://o7glki26c.bkt.clouddn.com/insertionSort2.jpg?imageView2/0/h/200/format/png" alt=""></p>
+<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><ol>
+<li>index=2；</li>
+<li>从第index个元素开始遍历，当前元素为key；</li>
+<li>将key向左移动，直至左侧数字不大于key；</li>
+<li>index++；</li>
+<li>index不超过数组大小，返回2；超过数组大小，排序结束。</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> key = a[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; a[j] &gt; key) &#123;</span><br><span class="line">                a[j + <span class="number">1</span>] = a[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            a[j + <span class="number">1</span>] = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##时间复杂度<br>最好o(n)，最差o(n^2)，平均o(n^2)，空间复杂度o(1)，稳定。</p>
 
 
 			
