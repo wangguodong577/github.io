@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="Guodong">
+    
+    <meta name="description" content="写过好多次排序了，我总感觉冒泡是最难的，这次仔细阐述一下冒泡排序的原理。希望能给和我有一样问题的人一些帮助。">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="Guodong" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>插入排序 | Guodong</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    
+                    <li><a href="https://github.com/wangguodong577" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/05/20/冒泡排序/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>插入排序</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-05-20T08:25:14.000Z" itemprop="datePublished">2016-05-20</time>，更新于:<time datetime="2016-05-20T09:18:35.000Z" itemprop="dateModified">2016-05-20</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个flash让你明白冒泡排序原理"><span class="toc-number">1.</span> <span class="toc-text">一个flash让你明白冒泡排序原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法介绍"><span class="toc-number">2.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+            </div>
+            
+            <p>写过好多次排序了，我总感觉冒泡是最难的，这次仔细阐述一下冒泡排序的原理。希望能给和我有一样问题的人一些帮助。<br><a id="more"></a></p>
+<h2 id="一个flash让你明白冒泡排序原理"><a href="#一个flash让你明白冒泡排序原理" class="headerlink" title="一个flash让你明白冒泡排序原理"></a>一个flash让你明白冒泡排序原理</h2><p><a href="http://student.zjzk.cn/course_ware/data_structure/web/flashhtml/maopaopaixu.htm" target="_blank" rel="external">http://student.zjzk.cn/course_ware/data_structure/web/flashhtml/maopaopaixu.htm</a></p>
+<h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><p>假设数组为a，数组长度为n，不考虑边界条件和数组长度为1的情况。以一次冒泡为例，多次冒泡重复此过程即可。</p>
+<ol>
+<li>index=n-1;</li>
+<li>如果index-1=0，本次冒泡结束，否则进入3；</li>
+<li>a[index]和a[index-1]的元素比较大小，若a[index-1]&gt;a[index],交换a[index-1]和a[index]，index=index-1，返回2。</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort1</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//i的作用，循环次数，循环“数组长度-1”次就完成排序了</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = a.length - <span class="number">1</span>; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = a[j];</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">                a[j - <span class="number">1</span>] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是最基本的冒泡排序，如果你仔细换茬，你会发现这个冒泡排序和你经常写的不太一样。<br>第4行的内层循环中，没有使用i。这也是我在第二行添加了i的作用的原因。<br>这种情况下的时间复杂度和空间复杂度是这样的：<br>最好o(n^2)，最差o(n^2)，平均o(n^2)，空间复杂度o(1)，稳定。</p>
+<p>为了减少内层循环次数，可以将第4行代码进行如下修改：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = a.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br></pre></td></tr></table></figure></p>
+<p>此时，i的作用不仅是控制外层循环的次数，也控制了内存循环的次数，外层循环每完成一次，内层循环执行的次数就-1。完整代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort2</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * i的作用,</span><br><span class="line">     * 1. 循环次数，循环“数组长度-1”次就完成排序了</span><br><span class="line">     * 2. 限制内层循环遍历的次数，外层循环每完成一次，内存循环遍历次数-1</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = a.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = a[j];</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">                a[j - <span class="number">1</span>] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种情况下的时间复杂度和空间复杂度是这样的：<br>最好o(n^2)，最差o(n^2)，平均o(n^2)，空间复杂度o(1)，稳定。</p>
+<p>然而被人熟知的冒泡排序算法中，时间复杂度最好的是o(n)。实现的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort3</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * i的作用,</span><br><span class="line">     * 1. 循环次数，循环“数组长度-1”次就完成排序了</span><br><span class="line">     * 2. 限制内层循环遍历的次数，外层循环每完成一次，内存循环遍历次数-1</span><br><span class="line">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;<span class="comment">//flag为true，表示已经排序完成。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = a.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &lt; a[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = a[j];</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">                a[j - <span class="number">1</span>] = tmp;</span><br><span class="line">                flag = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种情况下的时间复杂度和空间复杂度是这样的：<br>最好o(n)，最差o(n^2)，平均o(n^2)，空间复杂度o(1)，稳定。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>冒泡排序除非特定的业务场景，没有人会使用。<br>之所以存在这种排序算法，更多的是让人理解排序的基本概念。<br>上面列出的三种排序，我个人觉得都是标准的冒泡排序，也不一定说最好的时间复杂度必须是o(n)才能叫冒泡排序，只是各种实现上性能有所不同。你怎么看？</p>
+
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/05/20/冒泡排序/" data-title="插入排序" data-url="http://wangguodong577.github.io/2016/05/20/冒泡排序/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangguodong577"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    <div id="bottom-tip">
+        Guodong
+    </div>
+        <small><a href="https://hexo.io/" target="_blank">Hexo</a>， <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a> 主题</small><br />
+    </footer>
+
+    
+
+
+</body>
+</html>
+
