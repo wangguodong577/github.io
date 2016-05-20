@@ -90,7 +90,7 @@
         <h1>awk</h1>
         
         <div class="time-info">
-发表于:<time datetime="2016-05-19T09:20:26.000Z" itemprop="datePublished">2016-05-19</time>，更新于:<time datetime="2016-05-19T10:23:45.000Z" itemprop="dateModified">2016-05-19</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
+发表于:<time datetime="2016-05-19T09:20:26.000Z" itemprop="datePublished">2016-05-19</time>，更新于:<time datetime="2016-05-19T10:36:27.000Z" itemprop="dateModified">2016-05-19</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
         </div>
         
         <div class="post-body-inner">
@@ -100,10 +100,15 @@
             </div>
             
             <p>此处来自ubuntu下man awk。<br>awk语法比较复杂，本文介绍awk语法规则，不会对所有语法一一列举。<br><a id="more"></a></p>
-<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>来自awk：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An AWK program is a sequence of pattern &#123;action&#125; pairs and user function definitions.</span><br></pre></td></tr></table></figure></p>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>来自awk：<br><code>An AWK program is a sequence of pattern {action} pairs and user function definitions.</code></p>
 <p>实际上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'pattern1&#123;action1&#125; pattern2 &#123;action2&#125; ...'</span> filename</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pattern和action可以省略一个。</span><br><span class="line">pattern省略时，暗示匹配所有。action省略时，默认print。</span><br><span class="line">当pattern为特殊pattern，BEGIN和END时，action不能省略。</span><br></pre></td></tr></table></figure>
-<h2 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h2><p>来自awk：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A pattern can be:</span><br><span class="line">              BEGIN</span><br><span class="line">              END</span><br><span class="line">              expression</span><br></pre></td></tr></table></figure></p>
+<p><code>pattern和action可以省略一个。
+pattern省略时，暗示匹配所有。action省略时，默认print。
+当pattern为特殊pattern，BEGIN和END时，action不能省略。</code></p>
+<h2 id="pattern"><a href="#pattern" class="headerlink" title="pattern"></a>pattern</h2><p>来自awk：<br><code>A pattern can be:
+              BEGIN
+              END
+              expression</code></p>
 <p>BEGIN和END是两种特殊的pattern。</p>
 <p>如BEGIN，$3 &lt; 10。FS可以设置分隔符，后面会详细介绍。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | awk <span class="string">'BEGIN &#123;FS=":"&#125; $3 &lt; 10 &#123;print $1 "\t " $3&#125;'</span></span><br></pre></td></tr></table></figure>
