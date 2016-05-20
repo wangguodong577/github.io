@@ -3,6 +3,24 @@ function random(max) {
 }
 
 $(function() {
+    var proMaxHeight = 700;
+    var proMaxWidth = 700;
+    function proDownImage(ImgD){
+        var image=new Image();
+        image.src=ImgD.src;
+        if(image.width>0 && image.height>0){
+            var rate = (proMaxWidth/image.width < proMaxHeight/image.height)?proMaxWidth/image.width:proMaxHeight/image.height;
+            if(rate <= 1){
+                ImgD.width = image.width*rate;
+                ImgD.height =image.height*rate;
+            }
+            else {
+                ImgD.width = image.width;
+                ImgD.height =image.height;
+            }
+        }
+    }
+
     var idx = random(backArray.length - 1);
     //var idx = backArray.length - 1;
     $.backstretch(backRoot + backArray[idx]);
@@ -26,9 +44,13 @@ $(function() {
     
     $(".post-body p").each(function() {
         if($(this).find("img").length) {
-            $(this).css("text-align", "center");
+            $(this).css("text-align", "left");
         }
     });
 
     $(".post-body img").addClass("img-thumbnail img-responsive");
+
+    $(".post-body img").each(function() {
+        proDownImage($(this)[0]);
+    });
 });
