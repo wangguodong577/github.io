@@ -88,13 +88,13 @@
         <h1>二分查找</h1>
         
         <div class="time-info">
-发表于:<time datetime="2016-05-21T03:51:54.000Z" itemprop="datePublished">2016-05-21</time>，更新于:<time datetime="2016-05-21T04:03:00.000Z" itemprop="dateModified">2016-05-21</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
+发表于:<time datetime="2016-05-21T03:51:54.000Z" itemprop="datePublished">2016-05-21</time>，更新于:<time datetime="2016-05-21T04:04:18.000Z" itemprop="dateModified">2016-05-21</time>，By <a href="http://wangguodong577.github.io" title="Guodong">Guodong</a>
         </div>
         
         <div class="post-body-inner">
             <div id="toc" class="toc-article well">
                 <strong class="toc-title">大纲</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法介绍"><span class="toc-number">1.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">2.</span> <span class="toc-text">代码实现</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法介绍"><span class="toc-number">1.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#玩笑"><span class="toc-number">3.</span> <span class="toc-text">玩笑</span></a></li></ol>
             </div>
             
             <p>本文介绍归并排序的原理和实现。<br><a id="more"></a></p>
@@ -106,7 +106,7 @@
 <li>返回-1</li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">long</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = a.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (low + high) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> midVal = a[mid];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (midVal &lt; key)</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (midVal &gt; key)</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##玩笑<br>如果你是一个喷子，赶紧来给代码“找茬”吧，要是能找到你就厉害了。</p>
+<h2 id="玩笑"><a href="#玩笑" class="headerlink" title="玩笑"></a>玩笑</h2><p>如果你是一个喷子，赶紧来给代码“找茬”吧，要是能找到你就厉害了。</p>
 
 
 			
